@@ -3,9 +3,11 @@
     <head>
       <!--Import materialize.css-->
       <link type="text/css" rel="stylesheet" href="style/css/materialize.min.css"  media="screen,projection"/>
+      <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
       <!--Let browser know website is optimized for mobile-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+      <meta property="og:image" content="style/images/bootstrap-social.png" />
     </head>
 
     <body>
@@ -32,39 +34,47 @@
       <div class="row center">
         <h5 class="header col s12 light">Participez a des evenements pres de chez vous, faites des rencontres et partagez vos impressions</h5>
       </div>
+    </div>
+  </div>
 
-      <!-- FORM -->
+
+      <div class="container">
+    <div class="section">
+      <!--   Icon Section   -->
       <div class="row">
-  <form class="col s12">
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="username" type="text" class="validate">
-        <label for="username">Username</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="password" type="password" class="validate">
-        <label for="password">Password</label>
-      </div>
-    </div>
-    <div class="row">
-      <div class="input-field col s12">
-        <input id="email" type="email" class="validate">
-        <label for="email">Email</label>
-      </div>
-    </div>
-    <div class="row center">
-    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
-            <i class="mdi-content-send right"></i>
-          </button>
-    </div>
-  </form>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="mdi-image-flash-on"></i></h2>
+            <h5 class="center">Speeds up development</h5>
 
-  <!-- FIN FORM -->
-</div>
+            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+          </div>
+        </div>
 
-      <div id="fb-root"></div>
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="mdi-social-group"></i></h2>
+            <h5 class="center">User Experience Focused</h5>
+
+            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+          </div>
+        </div>
+
+        <div class="col s12 m4">
+          <div class="icon-block">
+            <h2 class="center light-blue-text"><i class="mdi-action-settings"></i></h2>
+            <h5 class="center">Easy to work with</h5>
+
+            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+    <br><br>
+
+     <div id="fb-root"></div>
 <script>
   window.fbAsyncInit = function() {
     FB.init({
@@ -148,58 +158,61 @@
 <div align="center">
  
 <div id="status">
- Click on Below Image to start the demo: <br/>
-<img src="http://hayageek.com/examples/oauth/facebook/oauth-javascript/LoginWithFacebook.png" style="cursor:pointer;" onclick="Login()"/>
+<a class="btn btn-block btn-social btn-facebook" style="cursor:pointer;" onclick="Login()">
+    <i class="fa fa-facebook"></i>  | Sign in or Connect with Facebook
+</a>
 </div> 
+
 </div>
 
-    </div>
-  </div>
+<div class="container">
 
-
-  <div class="container">
-    <div class="section">
-      <!--   Icon Section   -->
+      <!-- FORM -->
       <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-image-flash-on"></i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-social-group"></i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="mdi-action-settings"></i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
+  <form class="col s12">
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="username" type="text" class="validate">
+        <label for="username">Username</label>
       </div>
-
     </div>
-    <br><br>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="password" type="password" class="validate">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s12">
+        <input id="email" type="email" class="validate">
+        <label for="email">Email</label>
+      </div>
+    </div>
+    <div class="row center">
+    <button class="btn waves-effect waves-light" type="submit" name="action">Submit
+            <i class="mdi-content-send right"></i>
+          </button>
+    </div>
+  </form>
+
+  <!-- FIN FORM -->
+</div>
+</div>
+
+     
 
 
+
+
+
+<div class="container">
 
     <!--   Cards Section   -->
     <div class="row">
     <div class="col s12 m4">
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/bouffe.jpg">
+          <img class="activator" src="style/images/bouffe.jpg">
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">Plan Bouffe sur le campus de Nanterre<i class="mdi-navigation-more-vert right"></i></span>
@@ -215,7 +228,7 @@
     <div class="col s12 m4">
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/exposition.jpg">
+          <img class="activator" src="style/images/exposition.jpg">
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">Expo sublime au Point Ephemere de Colombes <i class="mdi-navigation-more-vert right"></i></span>
@@ -231,7 +244,7 @@
     <div class="col s12 m4">
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/concert.jpg">
+          <img class="activator" src="style/images/concert.jpg">
         </div>
         <div class="card-content">
           <span class="card-title activator grey-text text-darken-4">Concert improvise sur les quais a St Michel <i class="mdi-navigation-more-vert right"></i></span>
@@ -243,7 +256,11 @@
         </div>
       </div>
     </div>
+  
+
   </div>
+
+</div>
 
     <div class="section">
 
