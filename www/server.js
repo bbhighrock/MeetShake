@@ -12,8 +12,8 @@ var connection = mysql.createConnection({
   database : 'meetshake'
 
 });
- 
 
+connection.connect();
 
 
 
@@ -32,11 +32,34 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
+// Récupére l'ensemble des Billets
+app.post('/cards', function(req, res) {
+
+    //Récupération des coordonnées
+    var coord = {'latitude' : req.body.latitude, 'longitude' : req.body.longitude};
+
+    /* ... voir http://jsfiddle.net/LyD4Q/4/ */
+
+    connection.query('SELECT * FROM cards', function(err, rows, fields) {
+        if (!err)
+            console.log('The solution is: ', rows);
+        else
+            console.log('Error while performing Query.');
+    });
+
+
+    res.json();
+    res.render('home');
+});
+
+
+
+
 app.listen(8333);
 console.log('8333 is the magic port');
 
 
-connection.connect();
+
 connection.query('SELECT * FROM cards', function(err, rows, fields) {
   if (!err)
     console.log('The solution is: ', rows);

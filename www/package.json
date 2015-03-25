@@ -4,6 +4,7 @@
   "dependencies": {
     "express": "^4.6.1",
     "mysql": ">=2.5.0",
-    "jade": "*"
+    "jade": "*",
+    "city-reverse-geocoder": "*"
   }
 }
