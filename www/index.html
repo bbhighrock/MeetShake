@@ -15,12 +15,13 @@
       <nav class="light-blue lighten-1" role="navigation">
     <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">MeetShake</a>
       <ul class="right">
-        <li><a href="#"><i class="large mdi-content-add"></i></a></li>
+        <li><a href="#"><i class="large mdi-content-add" title="Publier un billet"></i></a></li>
       </ul>
 
       <ul id="nav-mobile" class="side-nav">
         <li><a href="#">Navbar Link</a></li>
       </ul>
+
       <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="mdi-navigation-menu"></i></a>
     </div>
   </nav>
@@ -53,24 +54,104 @@
         <label for="email">Email</label>
       </div>
     </div>
+    <div class="row center">
     <button class="btn waves-effect waves-light" type="submit" name="action">Submit
             <i class="mdi-content-send right"></i>
           </button>
+    </div>
   </form>
+
+  <!-- FIN FORM -->
 </div>
-<!-- FIN FORM -->
 
-
-
-
-
+      <div id="fb-root"></div>
+<script>
+  window.fbAsyncInit = function() {
+    FB.init({
+      appId      : '342815219241216', // App ID
+      channelUrl : 'http://localdev.dev',
+      status     : true, // check login status
+      cookie     : true, // enable cookies to allow the server to access the session
+      xfbml      : true  // parse XFBML
+    });
     
-    <!--
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange"></a>
-      </div>
-    -->
-      <br><br>
+
+    FB.Event.subscribe('auth.authResponseChange', function(response) 
+    {
+      if (response.status === 'connected') 
+      {
+        //SUCCESS
+      }   
+     else if (response.status === 'not_authorized') 
+      {
+        //FAILED
+      } else
+      {
+        //UNKNOWN ERROR. Logged Out
+      }
+    });
+    };
+ 
+  function Login()
+    {
+ 
+        FB.login(function(response) {
+           if (response.authResponse) 
+           {
+                getUserInfo();
+            } else 
+            {
+             console.log('User cancelled login or did not fully authorize.');
+            }
+         },{scope: 'email,user_photos,user_videos'});
+ 
+    }
+ 
+  function getUserInfo() {
+        FB.api('/me', function(response) {
+ 
+      var str="<b>Name</b> : "+response.name+"<br>";
+          <!--str +="<b>Link: </b>"+response.link+"<br>";-->
+          <!--str +="<b>id: </b>"+response.id+"<br>";-->
+          str +="<b>Email:</b> "+response.email+"<br>";
+          str +="<input type='button' value='Get Photo' onclick='getPhoto();'/>";
+          str +="<input type='button' value='Logout' onclick='Logout();'/>";
+          document.getElementById("status").innerHTML=str;
+ 
+    });
+    }
+    function getPhoto()
+    {
+      FB.api('/me/picture?type=normal', function(response) {
+ 
+          var str="<br/><b>Pic</b> : <img src='"+response.data.url+"'/>";
+          document.getElementById("status").innerHTML+=str;
+ 
+    });
+ 
+    }
+    function Logout()
+    {
+        FB.logout(function(){document.location.reload();});
+    }
+ 
+  // Load the SDK asynchronously
+  (function(d){
+     var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement('script'); js.id = id; js.async = true;
+     js.src = "//connect.facebook.net/fr_FR/all.js";
+     ref.parentNode.insertBefore(js, ref);
+   }(document));
+ 
+</script>
+<div align="center">
+ 
+<div id="status">
+ Click on Below Image to start the demo: <br/>
+<img src="http://hayageek.com/examples/oauth/facebook/oauth-javascript/LoginWithFacebook.png" style="cursor:pointer;" onclick="Login()"/>
+</div> 
+</div>
 
     </div>
   </div>
@@ -150,10 +231,10 @@
     <div class="col s12 m4">
     <div class="card">
         <div class="card-image waves-effect waves-block waves-light">
-          <img class="activator" src="images/office.jpg">
+          <img class="activator" src="images/concert.jpg">
         </div>
         <div class="card-content">
-          <span class="card-title activator grey-text text-darken-4">Card Title 3 <i class="mdi-navigation-more-vert right"></i></span>
+          <span class="card-title activator grey-text text-darken-4">Concert improvise sur les quais a St Michel <i class="mdi-navigation-more-vert right"></i></span>
           <p><a href="#">This is a link</a></p>
         </div>
         <div class="card-reveal">
@@ -210,5 +291,6 @@
       <!--Import jQuery before materialize.js-->
       <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
       <script type="text/javascript" src="style/js/materialize.min.js"></script>
+      <script src="//connect.facebook.net/fr_FR/all.js"></script>
     </body>
   </html>
