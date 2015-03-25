@@ -44,7 +44,7 @@ var map;
 
 function LocalizeMe() {
   var mapOptions = {
-    zoom: 6
+    zoom: 15
   };
   map = new google.maps.Map(document.getElementById('map-canvas'),
       mapOptions);
