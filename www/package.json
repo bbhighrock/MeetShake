@@ -5,6 +5,7 @@
     "express": "^4.6.1",
     "mysql": ">=2.5.0",
     "jade": "*",
-    "city-reverse-geocoder": "*"
+    "gps-distance": "*",
+    "body-parser": "*"
   }
 }

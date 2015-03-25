@@ -13,6 +13,15 @@ var connection = mysql.createConnection({
 
 });
 
+var bodyParser = require('body-parser');
+app.use(bodyParser.json()); // support json encoded bodies
+app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+
+var gps_dist = require('gps-distance');
+
+var dist = gps_dist(48.85,2.58,48.85,2.58);
+console.log('DISTANCE =' + dist);
+
 connection.connect();
 
 
@@ -35,31 +44,45 @@ app.get('/about', function(req, res) {
 // Récupére l'ensemble des Billets
 app.post('/cards', function(req, res) {
 
-    //Récupération des coordonnées
-    var coord = {'latitude' : req.body.latitude, 'longitude' : req.body.longitude};
+    //Récupération des parametres
+    var user_info = {'latitude' : req.latitude,
+                     'longitude' : req.longitude,
+                     'perim' : req.body.perim
+    };
+    console.log(user_info);
 
-    /* ... voir http://jsfiddle.net/LyD4Q/4/ */
+    /* ... voir http://jsfiddle.net/LyD4Q/4/
+
+    var cards = [];
+
+    var paris = { 'longitude' : 48.856614, 'latitute' : 2.352222};
 
     connection.query('SELECT * FROM cards', function(err, rows, fields) {
-        if (!err)
-            console.log('The solution is: ', rows);
+        if (!err){
+            rows.forEach(function(card) {
+                //var distance = gps_dist(user_info.latitude,user_info.longitude,card.latitude,card.longitude);
+                var distance = gps_dist(paris.latitute,paris.longitude,card.latitude,card.longitude);
+                if(distance <= user_info.perim){
+                    cards.push(card);
+                    console.log("Ajout d'une Card");
+                }
+            });
+        }
         else
             console.log('Error while performing Query.');
-    });
 
+    res.json(cards);
+    console.log(res);
+    //res.render('home');
+*/
 
-    res.json();
-    res.render('home');
 });
-
-
-
 
 app.listen(8333);
 console.log('8333 is the magic port');
 
 
-
+/*
 connection.query('SELECT * FROM cards', function(err, rows, fields) {
   if (!err)
     console.log('The solution is: ', rows);
@@ -67,7 +90,7 @@ connection.query('SELECT * FROM cards', function(err, rows, fields) {
     console.log('Error while performing Query.');
 });
 
-connection.end();
+connection.end();*/
 /*
  register (enregistrement d'un utilisateur )
 
