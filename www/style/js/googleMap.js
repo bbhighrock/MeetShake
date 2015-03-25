@@ -58,7 +58,7 @@ function LocalizeMe() {
       var infowindow = new google.maps.InfoWindow({
         map: map,
         position: pos,
-        content: 'Location found using HTML5.'
+        content: 'Coordonée : ' + position.coords.latitude + ' - ' + position.coords.longitude
       });
 
       map.setCenter(pos);
