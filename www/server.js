@@ -14,18 +14,18 @@ var connection = mysql.createConnection({
 });
 
 var bodyParser = require('body-parser');
-app.use(bodyParser.json()); // support json encoded bodies
-app.use(bodyParser.urlencoded({ extended: true })); // support encoded bodies
+app.use(bodyParser()); // support json encoded bodies
+
 
 var gps_dist = require('gps-distance');
 
-var dist = gps_dist(48.85,2.58,48.85,2.58);
+var dist = gps_dist(48.85,2.57,48.85,2.58);
 console.log('DISTANCE =' + dist);
 
 connection.connect();
 
 
-
+app.set('views', __dirname + '/views');
 // set the view engine to ejs
 app.set('view engine', 'ejs');
 
@@ -33,7 +33,7 @@ app.set('view engine', 'ejs');
 
 // index page 
 app.get('/', function(req, res) {
-    res.render('pages/index');
+    res.render('../index');
 });
 
 // about page 
@@ -41,12 +41,15 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-// Récupére l'ensemble des Billets
+
+/*********************** Affichage BillBoard **********************/
+
+// Selection des Billets en fonction de la proximité
 app.post('/cards', function(req, res) {
 
     //Récupération des parametres
-    var user_info = {'latitude' : req.latitude,
-                     'longitude' : req.longitude,
+    var user_info = {'latitude' : req.body.latitude,
+                     'longitude' : req.body.longitude,
                      'perim' : req.body.perim
     };
     console.log(user_info);
@@ -73,16 +76,77 @@ app.post('/cards', function(req, res) {
 
     res.json(cards);
     console.log(res);
-    //res.render('home');
+    //res.render('/pages/home');
 */
 
 });
+
+
+// Selection des Billets en fonction de la proximité et du théme
+app.get('cards/theme:', function(req,res){
+
+
+});
+
+/********************** User Cards *********************/
+
+//Selection des billets d'un user par son id_user
+app.get('cards/id_user:', function(req,res){
+
+
+});
+
+/*********************** Connexion **********************/
+
+//Fonction permettant d'enregistrer un utilisateur
+app.post('/register', function(req,res){
+
+
+});
+
+
+//Authentification sur le site
+app.post('/auth',function(req,res){
+
+
+});
+
+
+/*********************** CARD **************************/
+
+//Insertion d'un nouveau billet
+app.post('/card',function(req,res){
+
+
+});
+
+
+//Supression d'un billet par id en méthode Delete
+app.delete('/card/id:', function(req,res){
+
+
+});
+
+//Update d'un billet par id en méthode Update
+app.update('/card/id:', function(req,res){
+
+
+});
+
+//Selection d'un billet par id en methode get
+app.get('card/id:', function(req,res){
+
+
+});
+
+
+/********************************************************/
 
 app.listen(8333);
 console.log('8333 is the magic port');
 
 
-/*
+
 connection.query('SELECT * FROM cards', function(err, rows, fields) {
   if (!err)
     console.log('The solution is: ', rows);
@@ -90,25 +154,4 @@ connection.query('SELECT * FROM cards', function(err, rows, fields) {
     console.log('Error while performing Query.');
 });
 
-connection.end();*/
-/*
- register (enregistrement d'un utilisateur )
-
- authentification (connection d'un utilisateur mdp / password)
-
- cards ( Creation / Modification / Suppression / Select1: Geoloc ou|et Théme / Select2: Mes cards )
-
-	/addCard 
-		Insertion carte 
-
-	/majCard by id
-
-	/delete by id
-
-	/cards by geoloc et|ou theme
-
-	/mycards by id personne
-
- confPerimetre (Curseur périmétre de géolocalisation)
-
-*/
+connection.end();
