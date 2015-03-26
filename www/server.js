@@ -2,7 +2,6 @@
 // load the things we need
 var express = require('express');
 var mysql = require('mysql');
-var bodyParser = require('body-parser');
 var gps_dist = require('gps-distance');
 
 
@@ -22,7 +21,7 @@ var connection = mysql.createConnection({
 });
 
 // Configuration du module body-parser
-app.use(bodyParser()); // support json encoded bodies
+app.use(express.bodyParser()); // support json encoded bodies
 
 //Configuration chemin dossier views
 app.set('views', __dirname + '/views');
@@ -30,7 +29,8 @@ app.set('views', __dirname + '/views');
 //Configuration du moteur de template : EJS
 app.set('view engine', 'ejs');
 
-app.use(express.static(__dirname + '/public'));
+
+app.use(express.static(__dirname+'/'));
 
 /************************** Test ****************************/
 
@@ -58,38 +58,37 @@ app.get('/about', function(req, res) {
 
 // Selection des Billets en fonction de la proximité
 app.post('/cards', function(req, res) {
-
+console.log("toto");
+console.log(req.body.latitude);
     //Récupération des parametres
     var user_info = {'latitude' : req.body.latitude,
         'longitude' : req.body.longitude,
         'perim' : req.body.perim
     };
+
     console.log(user_info);
 
-    /* ... voir http://jsfiddle.net/LyD4Q/4/
-
-     var cards = [];
+    /* var cards = [];
 
      var paris = { 'longitude' : 48.856614, 'latitute' : 2.352222};
 
      connection.query('SELECT * FROM cards', function(err, rows, fields) {
      if (!err){
-     rows.forEach(function(card) {
-     //var distance = gps_dist(user_info.latitude,user_info.longitude,card.latitude,card.longitude);
-     var distance = gps_dist(paris.latitute,paris.longitude,card.latitude,card.longitude);
-     if(distance <= user_info.perim){
-     cards.push(card);
-     console.log("Ajout d'une Card");
-     }
-     });
+         rows.forEach(function(card) {
+            //var distance = gps_dist(user_info.latitude,user_info.longitude,card.latitude,card.longitude);
+            var distance = gps_dist(paris.latitute,paris.longitude,card.latitude,card.longitude);
+             if(distance <= user_info.perim){
+                 cards.push(card);
+                 console.log("Ajout d'une Card");
+             }
+         });
      }
      else
      console.log('Error while performing Query.');
 
      res.json(cards);
      console.log(res);
-     //res.render('/pages/home');
-     */
+     res.render('/pages/home');*/
 
 });
 

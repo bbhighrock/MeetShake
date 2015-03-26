@@ -2,7 +2,7 @@
   "name": "node-ejs",
   "main": "server.js",
   "dependencies": {
-    "express": "^4.6.1",
+    "express": "3.0.0",
     "mysql": ">=2.5.0",
     "jade": "*",
     "gps-distance": "*",
