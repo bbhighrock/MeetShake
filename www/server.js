@@ -53,13 +53,14 @@ app.get('/about', function(req, res) {
     res.render('pages/about');
 });
 
-
 /*********************** Affichage BillBoard **********************/
 
 // Selection des Billets en fonction de la proximité
 app.post('/cards', function(req, res) {
-console.log("toto");
-console.log(req.body.latitude);
+
+    console.log("toto");
+    console.log(req.body.latitude);
+
     //Récupération des parametres
     var user_info = {'latitude' : req.body.latitude,
         'longitude' : req.body.longitude,
@@ -144,6 +145,7 @@ app.listen(8333);
 console.log('8333 is the magic port');
 
 connection.query('SELECT * FROM cards', function(err, rows, fields) {
+
     if (!err)
         console.log('The solution is: ', rows);
     else
