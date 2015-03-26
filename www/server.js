@@ -1,10 +1,18 @@
 // server.js
 // load the things we need
 var express = require('express');
+var mysql = require('mysql');
+var bodyParser = require('body-parser');
+var gps_dist = require('gps-distance');
+
+
+/*****************Configuration Module***************/
+
+// Initialisation du module Express
 var app = express();
 
 
-var mysql = require('mysql');
+//Configuration des paramétres de connexion à la BD MySQL
 var connection = mysql.createConnection({
   host     : 'localhost',
   user     : 'root',
@@ -13,11 +21,18 @@ var connection = mysql.createConnection({
 
 });
 
-var bodyParser = require('body-parser');
+// Configuration du module body-parser
 app.use(bodyParser()); // support json encoded bodies
 
+//Configuration chemin dossier views
+app.set('views', __dirname + '/views');
 
-var gps_dist = require('gps-distance');
+//Configuration du moteur de template : EJS
+app.set('view engine', 'ejs');
+
+/************************** Test ****************************/
+
+
 
 var dist = gps_dist(48.85,2.57,48.85,2.58);
 console.log('DISTANCE =' + dist);
@@ -25,15 +40,12 @@ console.log('DISTANCE =' + dist);
 connection.connect();
 
 
-app.set('views', __dirname + '/views');
-// set the view engine to ejs
-app.set('view engine', 'ejs');
 
 // use res.render to load up an ejs view file
 
-// index page 
+// index page
 app.get('/', function(req, res) {
-    res.render('../index');
+    res.render('pages/index');
 });
 
 // about page 
@@ -83,7 +95,7 @@ app.post('/cards', function(req, res) {
 
 
 // Selection des Billets en fonction de la proximité et du théme
-app.get('cards/theme:', function(req,res){
+app.get('cards/:theme', function(req,res){
 
 
 });
@@ -91,7 +103,7 @@ app.get('cards/theme:', function(req,res){
 /********************** User Cards *********************/
 
 //Selection des billets d'un user par son id_user
-app.get('cards/id_user:', function(req,res){
+app.get('cards/:id_user', function(req,res){
 
 
 });
@@ -122,19 +134,19 @@ app.post('/card',function(req,res){
 
 
 //Supression d'un billet par id en méthode Delete
-app.delete('/card/id:', function(req,res){
+app.delete('/card/:id', function(req,res){
 
 
 });
 
 //Update d'un billet par id en méthode Update
-app.update('/card/id:', function(req,res){
+app.post('/card/:id', function(req,res){
 
 
 });
 
 //Selection d'un billet par id en methode get
-app.get('card/id:', function(req,res){
+app.get('card/:id', function(req,res){
 
 
 });
