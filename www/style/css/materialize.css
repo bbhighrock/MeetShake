@@ -5697,7 +5697,7 @@ ul.tabs li.tab {
 .btn, .btn-large {
   text-decoration: none;
   color: #FFF;
-  background-color: #26a69a;
+  background-color: #F44336;
   text-align: center;
   letter-spacing: 0.5px;
   -webkit-transition: 0.2s ease-out;
@@ -5707,7 +5707,7 @@ ul.tabs li.tab {
   transition: 0.2s ease-out;
   cursor: pointer; }
   .btn:hover, .btn-large:hover {
-    background-color: #2bbbad; }
+    background-color: #F11336; }
 
 .btn-floating {
   display: inline-block;
@@ -5718,7 +5718,7 @@ ul.tabs li.tab {
   height: 37px;
   line-height: 37px;
   padding: 0;
-  background-color: #26a69a;
+  background-color: #F44336;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -6117,7 +6117,7 @@ label {
     -o-transform: translateY(-140%);
     transform: translateY(-140%); }
   .input-field input[type=text]:focus + label, .input-field input[type=password]:focus + label, .input-field input[type=email]:focus + label, .input-field input[type=url]:focus + label, .input-field input[type=date]:focus + label, .input-field input[type=tel]:focus + label, .input-field input[type=number]:focus + label, .input-field input[type=search]:focus + label, .input-field textarea:focus.materialize-textarea + label {
-    color: #26a69a; }
+    color: #F44336; }
   .input-field input[type=text].valid, .input-field input[type=password].valid, .input-field input[type=email].valid, .input-field input[type=url].valid, .input-field input[type=date].valid, .input-field input[type=tel].valid, .input-field input[type=number].valid, .input-field input[type=search].valid, .input-field textarea.materialize-textarea.valid {
     border-bottom: 1px solid #4CAF50;
     -webkit-box-shadow: 0 1px 0 0 #4CAF50;
@@ -6138,7 +6138,7 @@ label {
     -ms-transition: color 0.2s;
     transition: color 0.2s; }
     .input-field .prefix.active {
-      color: #26a69a; }
+      color: #F44336; }
   .input-field .prefix ~ input, .input-field .prefix ~ textarea {
     margin-left: 3rem;
     width: 92%;
@@ -6186,10 +6186,10 @@ input[type=text], input[type=password], input[type=email], input[type=url], inpu
   transition: 0.3s; }
 
 input[type=text]:focus, input[type=password]:focus, input[type=email]:focus, input[type=url]:focus, input[type=date]:focus, input[type=tel]:focus, input[type=number]:focus, input[type=search]:focus, textarea:focus.materialize-textarea {
-  border-bottom: 1px solid #26a69a;
-  -webkit-box-shadow: 0 1px 0 0 #26a69a;
-  -moz-box-shadow: 0 1px 0 0 #26a69a;
-  box-shadow: 0 1px 0 0 #26a69a; }
+  border-bottom: 1px solid #F44336;
+  -webkit-box-shadow: 0 1px 0 0 #F44336;
+  -moz-box-shadow: 0 1px 0 0 #F44336;
+  box-shadow: 0 1px 0 0 #F44336; }
 
 textarea.materialize-textarea {
   overflow-y: hidden;
