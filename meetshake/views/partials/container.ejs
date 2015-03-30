@@ -1,0 +1,24 @@
+<div class="container">
+
+    <div class="row">%>
+        <% data.forEach(function(ind){ %>
+
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-image waves-effect waves-block waves-light">
+                    <img class="activator" src=<%= ind.image %>>
+                </div>
+                <div class="card-content">
+                    <span class="card-title activator grey-text text-darken-4"><%= JSON.stringify(ind.titre) %><i class="mdi-navigation-more-vert right"></i></span>
+                    <p><a href="#">Long:<%= JSON.stringify(ind.longitude) %> ,Lat:<%= JSON.stringify(ind.latitude) %></a></p>
+                </div>
+                <div class="card-reveal">
+                    <span class="card-title grey-text text-darken-4"><%= JSON.stringify(ind.titre) %><i class="mdi-navigation-close right"></i></span>
+                    <p><%= JSON.stringify(ind.description) %></p>
+                </div>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+
+</div> <!-- container -->
